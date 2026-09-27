@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Zene - Diffraction</title>
+		<link rel="stylesheet" href="/styles/main.css">
+		<link rel="stylesheet" href="/styles/pages.css">
+	</head>
+	<body>
+        <a id="backButton" href="/programming/">&ltBack&gt</a>
+        <span id="date">27/09/2026</span>
+        
+		<header>
+			<h1>Diffraction Visualiser</h1>
+			<span class="sidenote">Social media links:
+                <a href="https://github.com/zene-uk">GitHub</a>,
+                <a href="https://www.youtube.com/@_zene">Youtube</a>,
+                <a href="https://www.instagram.com/owenf003">Instagram</a>,
+                <a href="mailto:receive@zene.uk">receive@zene.uk</a>
+            </span>
+			<hr />
+		</header>
+
+		<main>
+            <section class="columns">
+                <p>
+                    This is a program that simulates a slit diffraction with a customisable scene of slits and full control of the frequencies that are shone through them.
+                    The initial idea was to be able to draw the wave shape of the light that went through, which is what the fourier transform section on the right is for.
+                    However, most things you can draw have a dominant low frequency, so are basically red on the screen.
+                    Although it is still cool to be able to see the wave shapes of the things you draw on the frequency spectrum.
+                    <br/><br/>
+                    There are sliders to control the exposure of the screen as well as the relative intensity displayed on the spectrum to allow for finer control at low levels.
+                    This is because if you enable all frequencies simulated, the light intensity gets too high and the screen just goes white.
+                    The phase plot only affects the fourier transform as slits reset the phase of the incoming light.
+                    The wave shape plot is also synced to the lowest visable frequency so that a sine wave which fills the plot is completely red (shown below).
+                    <br/><br/>
+                    The program is still currently unfinished (like all of my projects).
+                    I have plans to add the ability to change the slit width and add bends in the wall.
+                    Curves would be cool, but they seem quite complicated and increasing the scope doesn't help finish a project.
+                    Some more usability features would be nice as well, but the GUI library is a little annoying to work with to develope those.
+                    <br/><br/>
+                    In terms of how it is implemented, it first uses the standard single slit diffraction intensisty distribution approximation.
+                    Then it sums up all the intensity of all slits foreach frequency of the spectrum that is used.
+                    To get the colour on the screen each frequency is turned back into RGB, scaled by the intensity, and summed together.
+                    It's probably not the most efficient or accurate method, but it seems to get good results.
+                    I did have plans to use numerical methods to compute solutions to the general equation to get more accurate results, but as it is already quite slow with a lot of slits and frequencies, I decided to put it hold for now.
+                    <br/><br/>
+                    The scene control scheme:
+                    <br/>
+                    <span><b>Esc</b> - Cancel current action;</span>
+                    <span><b>Ctrl + I</b> - Insert new slit;</span>
+                    <span><b>Scroll</b> - Zoom;</span>
+                    <span><b>Middle Mouse</b> - Pan;</span>
+                    <span><b>Left Mouse</b> - Select and move objects;</span>
+                    <span><b>Shift</b> - Snap currently moving wall point to set angles;</span>
+                    <span><b>Ctrl</b> - Change currently moving wall points about centre;</span>
+                    <span><b>Alt</b> - Snap currently moving wall point to be the previous length;</span>
+                    <br/><br/>
+                    <a href="https://github.com/zene-uk/diffraction">Source code</a>
+                    <!-- <br/><br/>
+                    Download binaries:
+                        <a href="/programming/downloads/Win-ComplexNumbers.zip" download>Windows</a>,
+                        <a href="/programming/downloads/Linux-ComplexNumbers.zip" download>Linux</a> -->
+                </p>
+                <img class="small" src="/thumbnails/diffraction.png" />
+            </section>
+            <hr class="small"/>
+            <section class="flex">
+                <div class="image-block">
+                    <img class="extra-small" src="/programming/images/fft1.png" />
+                    <span class="small sidenote">Single slit red</span>
+                </div>
+                <div class="image-block">
+                    <img class="extra-small" src="/programming/images/fft2.png" />
+                    <span class="small sidenote">Double slit rainbow</span>
+                </div>
+                <div class="image-block">
+                    <img class="extra-small" src="/programming/images/fft3.png" />
+                    <span class="small sidenote">Diffraction grating multicolour</span>
+                </div>
+                <div class="image-block">
+                    <img class="extra-small" src="/programming/images/fft4.png" />
+                    <span class="small sidenote">Diffraction grating yellow</span>
+                </div>
+            </section>
+		</main>
+	</body>
+</html>
